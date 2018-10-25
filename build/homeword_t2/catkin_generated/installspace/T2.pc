@@ -1,0 +1,8 @@
+prefix=/home/wangzhiyong/catkin_homeword/install
+
+Name: T2
+Description: Description of T2
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/wangzhiyong/catkin_homeword/install/lib 
+Requires: 

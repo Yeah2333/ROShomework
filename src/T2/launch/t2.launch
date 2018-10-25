@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="turtlesim" name="turtle" type="turtlesim_node"/>
+    <node pkg="T2" name="control" type="controlspawn"/>
+    <node pkg="T2" name="print" type="printpostion" output="screen"/>
+</launch>

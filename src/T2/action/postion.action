@@ -1,0 +1,7 @@
+#目标信息
+float32 x
+float32 y
+---
+uint32 nowpostion
+---
+float32 percent

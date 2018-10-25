@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="T2" name="t3server" type="t3_serve" output="screen"/>
+    <node pkg="T2" name="t3_client" type="t3_client" output="screen"/>
+ 
+</launch>
