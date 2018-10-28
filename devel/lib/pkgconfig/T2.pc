@@ -1,8 +1,0 @@
-prefix=/home/wangzhiyong/catkin_homeword/devel
-
-Name: T2
-Description: Description of T2
-Version: 0.0.0
-Cflags: -I/home/wangzhiyong/catkin_homeword/devel/include
-Libs: -L/home/wangzhiyong/catkin_homeword/devel/lib 
-Requires: message_runtime

@@ -1,2 +1,0 @@
-T2:learning_communication:learning_tf
--DCATKIN_DEVEL_PREFIX=/home/wangzhiyong/catkin_homeword/devel -DCMAKE_INSTALL_PREFIX=/home/wangzhiyong/catkin_homeword/install -G Unix Makefiles
