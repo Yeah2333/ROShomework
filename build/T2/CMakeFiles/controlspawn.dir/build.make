@@ -79,17 +79,21 @@ controlspawn_EXTERNAL_OBJECTS =
 
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: T2/CMakeFiles/controlspawn.dir/src/t2_controlspawn.cpp.o
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: T2/CMakeFiles/controlspawn.dir/build.make
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libtf.so
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libtf2_ros.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libactionlib.so
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libmessage_filters.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libroscpp.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libtf2.so
+/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libroscpp_serialization.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/librosconsole.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libroscpp_serialization.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/librostime.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /opt/ros/kinetic/lib/libcpp_common.so
 /home/wangzhiyong/catkin_homeword/devel/lib/T2/controlspawn: /usr/lib/x86_64-linux-gnu/libboost_system.so

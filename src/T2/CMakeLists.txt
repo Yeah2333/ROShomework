@@ -14,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -235,18 +237,18 @@ target_link_libraries(t3_client
 
 
 
-add_executable(t4_tfboardcast
-  src/t4_tfboardcast.cpp
+add_executable(t4_tfbroadcast
+  src/t4_tfbroadcast.cpp
 )
-add_dependencies(t4_tfboardcast ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(t4_tfboardcast
+add_dependencies(t4_tfbroadcast ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(t4_tfbroadcast
   ${catkin_LIBRARIES}
 )
 
-add_executable(t4_tflistener
-  src/t4_tflistener.cpp
+add_executable(t4_createpoint
+  src/t4_createpoint.cpp
 )
-add_dependencies(t4_tflistener ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(t4_tflistener
+add_dependencies(t4_createpoint ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(t4_createpoint
   ${catkin_LIBRARIES}
 )

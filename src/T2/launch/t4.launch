@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="T2" name="createpoint" type="t4_createpoint"/>
+    <node pkg="T2" name="t4_broad" type="t4_tfbroadcast"/>
+    <node pkg="T2" name="t4_listener" type="t4_tflistener" output="screen"/>
+</launch>
