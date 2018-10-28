@@ -17,6 +17,6 @@ int main(int argc ,char **argv){
 
     ros::Subscriber sub = node.subscribe("/turtle2/pose",10,&TurtleOutputCallback); //订阅姿态
    
-    ros::spin(); //没有这个执行一次后就会退出
+    ros::spin(); //
     return 0;
 }

@@ -1,0 +1,5 @@
+<launch>
+    <param name="bot_description" textfile="${find T3_bot_description/urdf/bot.urdf}">
+    
+
+</launch>
