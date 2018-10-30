@@ -1,5 +1,5 @@
 <launch>
-	<param name="robot_description" textfile="$(find mbot_description)/urdf/mbot_with_laser.urdf" />
+	<param name="robot_description" textfile="$(find mbot_description)/urdf/urdf/mbot_with_camera.urdf" />
 
 	<!-- 设置GUI参数，显示关节控制插件 -->
 	<param name="use_gui" value="true"/>
