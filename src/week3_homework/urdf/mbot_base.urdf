@@ -90,7 +90,7 @@
     </link>
 
     <joint name="front_caster_joint" type="continuous">
-        <origin xyz="0.15 0 -0.01" rpy="0 0 0"/>
+        <origin xyz="0.15 0 -0.025" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_caster_link"/>
         <axis xyz="0 1 0"/>
@@ -109,7 +109,7 @@
     </link>
 
     <joint name="back_caster_joint" type="continuous">
-        <origin xyz="-0.15 0 -0.01" rpy="0 0 0"/>
+        <origin xyz="-0.15 0 -0.025" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="back_caster_link"/>
         <axis xyz="0 1 0"/>
