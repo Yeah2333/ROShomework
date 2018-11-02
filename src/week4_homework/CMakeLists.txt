@@ -10,6 +10,9 @@ project(week4_homework)
 find_package(catkin REQUIRED COMPONENTS
   urdf
   xacro
+  geometry_msgs
+  roscpp
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
