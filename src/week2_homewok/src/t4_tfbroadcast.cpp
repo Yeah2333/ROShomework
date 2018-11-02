@@ -1,8 +1,8 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
-#include <T2/laserpoint.h>
+#include <week2_homework/laserpoint.h>
 
-void pointCallback(const T2::laserpointConstPtr& msg)
+void pointCallback(const week2_homework::laserpointConstPtr& msg)
 {
     //tf广播器
     static tf::TransformBroadcaster br;

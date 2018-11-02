@@ -252,3 +252,11 @@ add_dependencies(t4_createpoint ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXP
 target_link_libraries(t4_createpoint
   ${catkin_LIBRARIES}
 )
+
+add_executable(t4_tflistener
+  src/t4_tflistener.cpp
+)
+add_dependencies(t4_tflistener ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(t4_tflistener
+  ${catkin_LIBRARIES}
+)

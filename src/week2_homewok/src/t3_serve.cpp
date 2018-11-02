@@ -1,14 +1,14 @@
 #include <ros/ros.h>
 #include <actionlib/server/simple_action_server.h>
-#include "T2/postionAction.h" //自定义的action文件文件名后要跟Action
+#include "week2_homework/postionAction.h" //自定义的action文件文件名后要跟Action
 
-typedef actionlib::SimpleActionServer<T2::postionAction> Server;
+typedef actionlib::SimpleActionServer<week2_homework::postionAction> Server;
 //ros的action使用时会分成goal feedback等
 //收到action的goal后调用该函数
-void execute(const T2::postionGoalConstPtr& goal,Server* as) //目标
+void execute(const week2_homework::postionGoalConstPtr& goal,Server* as) //目标
 {
     ros::Rate r(1);
-    T2::postionFeedback feedback;
+    week2_homework::postionFeedback feedback;
 
     ROS_INFO("Now move to x: %f  y: %f",goal->x,goal->y);
 
