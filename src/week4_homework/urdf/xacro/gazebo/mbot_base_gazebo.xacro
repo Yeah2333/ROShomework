@@ -1,26 +1,17 @@
-<launch>
-
-    <!-- 设置launch文件的参数 -->
-    <arg name="paused" default="false"/>
-    <arg name="use_sim_time" default="true"/>
-    <arg name="gui" default="true"/>
-    <arg name="headless" default="false"/><?xml version="1.0"?>
+<?xml version="1.0"?>
 <robot name="mbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- PROPERTY LIST -->
     <xacro:property name="M_PI" value="3.1415926"/>
-    <xacro:property name="base_mass"   value="20" /> 
     <xacro:property name="base_radius" value="0.20"/>
-    <xacro:property name="base_length" value="0.16"/>
+    <xacro:property name="base_length" value="0.02"/>
 
-    <xacro:property name="wheel_mass"   value="2" />
-    <xacro:property name="wheel_radius" value="0.06"/>
+    <xacro:property name="wheel_radius" value="0.04"/>
     <xacro:property name="wheel_length" value="0.025"/>
-    <xacro:property name="wheel_joint_y" value="0.19"/>
-    <xacro:property name="wheel_joint_z" value="0.05"/>
+    <xacro:property name="wheel_joint_y" value="0.20"/>
+    <xacro:property name="wheel_joint_z" value="0"/>
 
-    <xacro:property name="caster_mass"    value="0.5" /> 
-    <xacro:property name="caster_radius"  value="0.015"/> <!-- wheel_radius - ( base_length/2 - wheel_joint_z) -->
+    <xacro:property name="caster_radius" value="0.015"/> <!-- wheel_radius - ( base_length/2 - wheel_joint_z) -->
     <xacro:property name="caster_joint_x" value="0.18"/>
 
     <!-- Defining the colors used in this robot -->
@@ -78,12 +69,10 @@
             </collision>
             <cylinder_inertial_matrix  m="${wheel_mass}" r="${wheel_radius}" h="${wheel_length}" />
         </link>
-
-        <gazebo reference="${prefix}_wheel_link">
+                <gazebo reference="${prefix}_wheel_link">
             <material>Gazebo/Gray</material>
         </gazebo>
-
-        <!-- Transmission is important to link the joints and the controller -->
+                <!-- Transmission is important to link the joints and the controller -->
         <transmission name="${prefix}_wheel_joint_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="${prefix}_wheel_joint" >
@@ -94,7 +83,9 @@
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission>
+
     </xacro:macro>
+    
 
     <!-- Macro for robot caster -->
     <xacro:macro name="caster" params="prefix reflect">
@@ -113,7 +104,8 @@
                 </geometry>
                 <material name="black" />
             </visual>
-            <collision>
+        </link>
+        <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
                     <sphere radius="${caster_radius}" />
@@ -127,7 +119,7 @@
         </gazebo>
     </xacro:macro>
 
-    <xacro:macro name="mbot_base_gazebo">
+    <xacro:macro name="mbot_base">
         <link name="base_footprint">
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -162,18 +154,75 @@
             </collision>   
             <cylinder_inertial_matrix  m="${base_mass}" r="${base_radius}" h="${base_length}" />
         </link>
-
-        <gazebo reference="base_link">
+     <joint name="stemdown_joint" type="fixed">
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="stem_link"/>
+    </joint>
+     <link name="stem_link">
+        <visual>
+            <origin xyz=" 0 0 0.05" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015"/>
+            </geometry>
+            <material name="yellow">
+            </material>
+        </visual>
+        <collision>
+              <collision>
+                <origin xyz=" 0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <cylinder length="${base_length}" radius="${base_radius}"/>
+                </geometry>
+            </collision>   
+            <cylinder_inertial_matrix  m="${base_mass}" r="${base_radius}" h="${base_length}" />  <origin xyz=" 0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <cylinder length="${base_length}" radius="${base_radius}"/>
+                </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${base_mass}" r="${base_radius}" h="${base_length}" />
+    </link>
+        <gazebo reference="stem_link">
             <material>Gazebo/Blue</material>
         </gazebo>
 
-        <wheel prefix="left"  reflect="-1"/>
+    <joint name="stemup_joint" type="fixed">
+        <origin xyz="0 0 0.09" rpy="0 0 0"/>
+        <parent link="stem_link"/>
+        <child link="second_link"/>
+    </joint>
+
+    <link name="second_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${base_length}" radius="${base_radius}"/>
+            </geometry>
+            <material name="yellow">
+            </material>
+        </visual>
+        <collision>
+                <origin xyz=" 0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <cylinder length="${base_length}" radius="${base_radius}"/>
+                </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${base_mass}" r="${base_radius}" h="${base_length}" />
+    </link>
+
+    <gazebo reference="base_link">
+            <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="second_link">
+            <material>Gazebo/Blue</material>
+    </gazebo>
+
+        <wheel prefix="left" reflect="-1"/>
         <wheel prefix="right" reflect="1"/>
 
         <caster prefix="front" reflect="-1"/>
-        <caster prefix="back"  reflect="1"/>
+        <caster prefix="back" reflect="1"/>
 
-        <!-- controller -->
         <gazebo>
             <plugin name="differential_drive_controller" 
                     filename="libgazebo_ros_diff_drive.so">
@@ -198,34 +247,6 @@
                 <robotBaseFrame>base_footprint</robotBaseFrame>
             </plugin>
         </gazebo> 
+
     </xacro:macro>
-
 </robot>
-
-    <arg name="debug" default="false"/>
-
-    <!-- 运行gazebo仿真环境 -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="debug" value="$(arg debug)" />
-        <arg name="gui" value="$(arg gui)" />
-        <arg name="paused" value="$(arg paused)"/>
-        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-        <arg name="headless" value="$(arg headless)"/>
-    </include>
-
-    <!-- 加载机器人模型描述参数 -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find week4_homework)/urdf/xacro/gazebo/mbot_kinect_lidar_gazebo.xacro'" /> 
-
-    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node> 
-
-    <!-- 运行robot_state_publisher节点，发布tf  -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"  output="screen" >
-        <param name="publish_frequency" type="double" value="50.0" />
-    </node>
-
-    <!-- 在gazebo中加载机器人模型-->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model mrobot -param robot_description"/> 
-
-</launch>

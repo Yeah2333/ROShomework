@@ -3,16 +3,16 @@
 
     <!-- PROPERTY LIST -->
     <xacro:property name="M_PI" value="3.1415926"/>
-    <xacro:property name="base_length" value="0.34"/>
-    <xacro:property name="base_height" value="0.02"/>
+    <xacro:property name="base_radius" value="0.20"/>
+    <xacro:property name="base_length" value="0.02"/>
 
     <xacro:property name="wheel_radius" value="0.04"/>
-    <xacro:property name="wheel_length" value="0.016"/>
-    <xacro:property name="wheel_joint_y" value="0.178"/>
+    <xacro:property name="wheel_length" value="0.025"/>
+    <xacro:property name="wheel_joint_y" value="0.20"/>
     <xacro:property name="wheel_joint_z" value="0"/>
 
     <xacro:property name="caster_radius" value="0.015"/> <!-- wheel_radius - ( base_length/2 - wheel_joint_z) -->
-    <xacro:property name="caster_joint_x" value="0.15"/>
+    <xacro:property name="caster_joint_x" value="0.18"/>
 
     <!-- Defining the colors used in this robot -->
     <material name="yellow">
@@ -48,7 +48,7 @@
     <!-- Macro for robot caster -->
     <xacro:macro name="caster" params="prefix reflect">
         <joint name="${prefix}_caster_joint" type="continuous">
-            <origin xyz="${reflect*caster_joint_x} 0 ${-(base_height/2 + caster_radius)}" rpy="0 0 0"/>
+            <origin xyz="${reflect*caster_joint_x} 0 ${-(base_length/2 + caster_radius)}" rpy="0 0 0"/>
             <parent link="base_link"/>
             <child link="${prefix}_caster_link"/>
             <axis xyz="0 1 0"/>
@@ -76,7 +76,7 @@
         </link>
 
         <joint name="base_footprint_joint" type="fixed">
-            <origin xyz="0 0 ${base_height/2 + caster_radius*2}" rpy="0 0 0" />        
+            <origin xyz="0 0 ${base_length/2 + caster_radius*2}" rpy="0 0 0" />        
             <parent link="base_footprint"/>
             <child link="base_link" />
         </joint>
@@ -85,18 +85,17 @@
             <visual>
                 <origin xyz=" 0 0 0" rpy="0 0 0" />
                 <geometry>
-                    <box size="${base_length} ${base_length} ${base_height}"/>
+                    <cylinder length="${base_length}" radius="${base_radius}"/>
                 </geometry>
                 <material name="yellow" />
             </visual>
         </link>
-          <joint name="stem1down_joint" type="fixed">
+     <joint name="stemdown_joint" type="fixed">
         <origin xyz="0 0 0.01" rpy="0 0 0"/>
         <parent link="base_link"/>
-        <child link="stem1_link"/>
+        <child link="stem_link"/>
     </joint>
-
-    <link name="stem1_link">
+     <link name="stem_link">
         <visual>
             <origin xyz=" 0 0 0.05" rpy="0 0 0" />
             <geometry>
@@ -107,19 +106,17 @@
         </visual>
     </link>
 
-    <joint name="stem1up_joint" type="fixed">
+    <joint name="stemup_joint" type="fixed">
         <origin xyz="0 0 0.09" rpy="0 0 0"/>
-        <parent link="stem1_link"/>
+        <parent link="stem_link"/>
         <child link="second_link"/>
     </joint>
 
-
-    
-        <link name="second_link">
+    <link name="second_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <box size="${base_length} ${base_length} ${base_height}"/>
+                <cylinder length="${base_length}" radius="${base_radius}"/>
             </geometry>
             <material name="yellow">
             </material>

@@ -5,7 +5,7 @@
         <visual>
             <origin xyz=" 0 0 0" rpy="0 0 0" />
             <geometry>
-                <box size="0.34 0.34 0.02"/>
+                <cylinder length="0.02" radius="0.20"/>
             </geometry>
             <material name="yellow">
                 <color rgba="1 0.4 0 1"/>
@@ -13,13 +13,13 @@
         </visual>
     </link>
 
-        <joint name="stem1down_joint" type="fixed">
+        <joint name="stemdown_joint" type="fixed">
         <origin xyz="0 0 0.01" rpy="0 0 0"/>
         <parent link="base_link"/>
-        <child link="stem1_link"/>
+        <child link="stem_link"/>
     </joint>
 
-    <link name="stem1_link">
+    <link name="stem_link">
         <visual>
             <origin xyz=" 0 0 0.05" rpy="0 0 0" />
             <geometry>
@@ -31,9 +31,9 @@
         </visual>
     </link>
 
-    <joint name="stem1up_joint" type="fixed">
+    <joint name="stemup_joint" type="fixed">
         <origin xyz="0 0 0.09" rpy="0 0 0"/>
-        <parent link="stem1_link"/>
+        <parent link="stem_link"/>
         <child link="second_link"/>
     </joint>
 
@@ -43,7 +43,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <box size="0.34 0.34 0.02"/>
+                <cylinder length="0.02" radius="0.20"/>
             </geometry>
             <material name="yellow">
                 <color rgba="1 0.4 0 1"/>
@@ -52,7 +52,7 @@
     </link>
 
     <joint name="left_wheel_joint" type="continuous">
-        <origin xyz="0 0.178 0" rpy="0 0 0"/>
+        <origin xyz="0 0.20 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="left_wheel_link"/>
         <axis xyz="0 1 0"/>
@@ -62,7 +62,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="1.5707 0 0" />
             <geometry>
-                <cylinder radius="0.04" length = "0.016"/>
+                <cylinder radius="0.04" length = "0.025"/>
             </geometry>
             <material name="white">
                 <color rgba="1 1 1 0.9"/>
@@ -71,7 +71,7 @@
     </link>
 
     <joint name="right_wheel_joint" type="continuous">
-        <origin xyz="0 -0.178 0" rpy="0 0 0"/>
+        <origin xyz="0 -0.20 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="right_wheel_link"/>
         <axis xyz="0 1 0"/>
@@ -81,7 +81,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="1.5707 0 0" />
             <geometry>
-                <cylinder radius="0.04" length = "0.016"/>
+                <cylinder radius="0.04" length = "0.025"/>
             </geometry>
             <material name="white">
                 <color rgba="1 1 1 0.9"/>
@@ -90,7 +90,7 @@
     </link>
 
     <joint name="front_caster_joint" type="continuous">
-        <origin xyz="0.15 0 -0.025" rpy="0 0 0"/>
+        <origin xyz="0.18 0 -0.025" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="front_caster_link"/>
         <axis xyz="0 1 0"/>
@@ -109,7 +109,7 @@
     </link>
 
     <joint name="back_caster_joint" type="continuous">
-        <origin xyz="-0.15 0 -0.025" rpy="0 0 0"/>
+        <origin xyz="-0.18 0 -0.025" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="back_caster_link"/>
         <axis xyz="0 1 0"/>
