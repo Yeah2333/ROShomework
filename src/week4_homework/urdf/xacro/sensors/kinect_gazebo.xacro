@@ -9,7 +9,7 @@
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
                 <geometry>
-                    <mesh filename="package://mbot_description/meshes/kinect.dae" />
+                    <mesh filename="package://week4_homework/meshes/kinect.dae" />
                 </geometry>
             </visual>
             <collision>
