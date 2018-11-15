@@ -21,10 +21,10 @@
     <!-- 运行rviz可视化界面 -->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find week4_homework)/config/mbot_arbotix.rviz" required="true" />
 
-    <node name="mbot_teleop" pkg="week4_homework" type="mbot_teleop.py" output="screen">
+    <!--<node name="mbot_teleop" pkg="week4_homework" type="mbot_teleop.py" output="screen">
     <param name="scale_linear" value="0.1" type="double"/>
     <param name="scale_angular" value="0.4" type="double"/>
-    </node>
+    </node>-->
 </launch>
 
  
