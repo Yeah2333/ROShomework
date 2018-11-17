@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(week5_homework)
+project(week6_homework)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   rospy
-  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -119,8 +118,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
+# include
   ${catkin_INCLUDE_DIRS}
-  include
 )
 
 ## Declare a C++ library
@@ -200,24 +199,3 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-
-add_executable(t3_listener
-  src/t3_listener.cpp
-  src/speech_recognizer.c 
-  src/linuxrec.c
-)
-add_dependencies(t3_listener ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(t3_listener
-  ${catkin_LIBRARIES}
-  libmsc.so -ldl -lpthread -lm -lrt -lasound
-)
-
-add_executable(t3_speaker
-  src/t3_speaker.cpp
-)
-add_dependencies(t3_speaker ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(t3_speaker
-  ${catkin_LIBRARIES}
-  libmsc.so -ldl -pthread
-)
